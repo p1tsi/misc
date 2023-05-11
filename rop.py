@@ -1,4 +1,4 @@
-# A simple exploit to a rop challenge for beguinners from
+# A simple exploit to a rop challenge for beginners from
 # https://crackmes.one/crackme/5f3d7ed033c5d42a7c667d95
 
 
