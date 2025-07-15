@@ -1,4 +1,4 @@
-The IPAs for the challenges are build to run on iOS 16+.
+The IPAs for the challenges are built to run on iOS 16+.
 
 Since I do not have such a device, I solved these challenges running them inside
 a macOS VM on a macOS with ARM chip host.
