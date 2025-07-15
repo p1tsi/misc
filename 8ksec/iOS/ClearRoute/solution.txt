@@ -1,0 +1,7 @@
+To solve this challenge I used my own wormhole.
+(https://github.com/p1tsi/wormhole)
+
+In particular, I hooked the target application with the "Network" module,
+intercepting (hopefully) all the HTTP requests made by the app using standard APIs.
+
+The result is in those two screenshots.
