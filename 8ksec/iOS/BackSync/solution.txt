@@ -1,0 +1,21 @@
+/*
+ * BackSync
+ *
+ * In this challenge, the application makes periodically an 
+ * HTTP GET request to a URL (new at each launch): 'http://xxxdeletedoldstagingsite.com/remoteConfig'.
+ * This "remoteConfig" should be a JSON containing "mode" and "target_url" keys. For "mode" the value
+ * should be "collect_logs", while "target_url" is the URL to which send the flag in a subsequent
+ * POST request. 
+ * 
+ * At startup, the application write the flag in a file (in macOS - which I used to solve the challenge -
+ * under "/Users/<user>/Documents/flag.txt") and the content of this file is sent as the application/json
+ * request body to "target_url".
+ *
+ * So to solve is just sufficient to add an entry to /etc/hosts and let de domain be resovled, 
+ * startup a web server at that IP (for instance, localhost) and serve "remoteConfig" file.
+ * Then the app makes a POST HTTP request sending: 
+ * {"flag":"FLAG{you_remotely_triggered_the_leak}"}
+ *
+ * Cheers
+ *
+**/
